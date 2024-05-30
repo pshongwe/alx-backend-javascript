@@ -5,9 +5,9 @@ export default class HolbertonCourse {
   /**
    * Creates new @see {@link HolbertonCourse}.
    *
-   * @param {String} name - Name of the course.
+   * @param {String} name - The name of the course.
    * @param {Number} length - How long the course is.
-   * @param {String[]} students - Students (names) taking the course.
+   * @param {String[]} students - The students [their names] taking the course.
    */
   constructor(name, length, students) {
     this.name = name;
