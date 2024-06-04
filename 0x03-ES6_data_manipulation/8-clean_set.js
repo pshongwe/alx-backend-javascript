@@ -7,7 +7,7 @@ export default function cleanSet(s, startString) {
 
   for (const x of s) {
     if (x.indexOf(startString) === 0) {
-      const temp = x.slice(startString.length);
+      const temp = x.substring(startString.length);
       text += `${temp}-`;
     }
   }
