@@ -1,15 +1,15 @@
 export default function cleanSet(s, startString) {
-  let text = '';
-
   if (startString === '') {
-    return text;
+    return '';
   }
+
+  const result = [];
 
   for (const x of s) {
-    if (x.indexOf(startString) === 0) {
-      const temp = x.substring(startString.length);
-      text += `${temp}-`;
+    if (x.startsWith(startString)) {
+      result.push(x.slice(startString.length));
     }
   }
-  return text.slice(0, -1);
+
+  return result.join('-');
 }
