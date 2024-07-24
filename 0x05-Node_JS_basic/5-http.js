@@ -1,6 +1,5 @@
 const http = require('http');
 const fs = require('fs');
-
 const SERVER_PORT = 1245;
 const SERVER_HOST = 'localhost';
 const app = http.createServer();
@@ -97,8 +96,8 @@ const ROUTE_HANDLERS = [
           res.statusCode = 200;
           res.write(Buffer.from(message));
         });
-    }
-  }
+    },
+  },
 ];
 
 app.on('request', (req, res) => {
