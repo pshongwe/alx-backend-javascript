@@ -10,10 +10,9 @@ export const readDatabase = async (filePath) => {
     const data = await fs.readFile(filePath, 'utf-8');
     const lines = data.trim().split('\n');
     const studentGroups = {};
-    const fieldNames = lines[0].split(',');
 
     for (const line of lines.slice(1)) {
-      if (line.trim()) {  // Ignore empty lines
+      if (line.trim()) {
         const studentData = line.split(',');
         const field = studentData.pop();
         const name = studentData[0]; // Assumes first column is the name
