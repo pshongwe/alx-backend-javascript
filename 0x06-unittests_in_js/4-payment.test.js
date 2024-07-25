@@ -23,7 +23,5 @@ describe('sendPaymentRequestToApi', () => {
     expect(stub.callCount).to.be.equal(1);
     expect(consoleSpy.calledOnceWith('The total is: 10')).to.be.true;
     expect(consoleSpy.callCount).to.be.equal(1);
-    stub.restore();
-    consoleSpy.restore();
   });
 });
