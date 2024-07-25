@@ -1,7 +1,5 @@
 const request = require('request');
 const { expect } = require('chai');
-const { app, server } = require('./api');
-
 const BASE_URL = 'http://localhost:7865';
 
 describe('Index page', function () {
