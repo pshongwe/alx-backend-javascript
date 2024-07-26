@@ -46,7 +46,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
         }
 
         const totalStudents = Object.values(studentsByField).reduce(
-          (prev, curr) => (prev || []).length + curr.length
+          (prev, curr) => (prev || []).length + curr.length,
         );
         outputParts.push(`Number of students: ${totalStudents}`);
         for (const [field, students] of Object.entries(studentsByField)) {
