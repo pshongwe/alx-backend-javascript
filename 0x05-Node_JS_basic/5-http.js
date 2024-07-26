@@ -32,7 +32,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
           const student = line.split(',');
           const studentValues = student.slice(
             0,
-            student.length - 1
+            student.length - 1,
           );
           const field = student[student.length - 1];
           if (!Object.keys(studentsByField).includes(field)) {
@@ -40,7 +40,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
           }
           const studentEntries = studentFields.map((field, index) => [
             field,
-            studentValues[index]
+            studentValues[index],
           ]);
           studentsByField[field].push(Object.fromEntries(studentEntries));
         }
