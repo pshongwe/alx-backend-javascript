@@ -72,7 +72,7 @@ const ROUTE_HANDLERS = [
       res.setHeader('Content-Length', message.length);
       res.statusCode = 200;
       res.write(Buffer.from(message));
-    }
+    },
   },
   {
     route: '/students',
