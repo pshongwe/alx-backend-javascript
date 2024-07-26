@@ -32,7 +32,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
           const student = line.split(',');
           const studentValues = student.slice(
             0,
-            student.length - 1,
+            student.length - 1
           );
           const field = student[student.length - 1];
           if (!Object.keys(studentsByField).includes(field)) {
@@ -40,20 +40,20 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
           }
           const studentEntries = studentFields.map((field, index) => [
             field,
-            studentValues[index],
+            studentValues[index]
           ]);
           studentsByField[field].push(Object.fromEntries(studentEntries));
         }
 
         const totalStudents = Object.values(studentsByField).reduce(
-          (prev, curr) => (prev || []).length + curr.length,
+          (prev, curr) => (prev || []).length + curr.length
         );
         outputParts.push(`Number of students: ${totalStudents}`);
         for (const [field, students] of Object.entries(studentsByField)) {
           outputParts.push([
             `Number of students in ${field}: ${students.length}.`,
             'List:',
-            students.map((student) => student.firstname).join(', '),
+            students.map((student) => student.firstname).join(', ')
           ].join(' '));
         }
         resolve(outputParts.join('\n'));
@@ -72,7 +72,7 @@ const ROUTE_HANDLERS = [
       res.setHeader('Content-Length', message.length);
       res.statusCode = 200;
       res.write(Buffer.from(message));
-    },
+    }
   },
   {
     route: '/students',
@@ -96,8 +96,8 @@ const ROUTE_HANDLERS = [
           res.statusCode = 200;
           res.write(Buffer.from(message));
         });
-    },
-  },
+    }
+  }
 ];
 
 app.on('request', (req, res) => {
