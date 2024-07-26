@@ -53,7 +53,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
           outputParts.push([
             `Number of students in ${field}: ${students.length}.`,
             'List:',
-            students.map((student) => student.firstname).join(', ')
+            students.map((student) => student.firstname).join(', '),
           ].join(' '));
         }
         resolve(outputParts.join('\n'));
