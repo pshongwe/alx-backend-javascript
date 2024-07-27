@@ -47,16 +47,16 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
+app.get('/', (_, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', (req, res) => {
+app.get('/students', (_, res) => {
   const dbFile = process.argv[2];
   countStudents(dbFile)
     .then((report) => {
       res.setHeader('Content-Type', 'text/plain');
+      res.statusCode = 200;
       res.send(`This is the list of our students\n${report}`);
     })
     .catch((err) => {
