@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+
 const app = express();
 const PORT = 1245;
 
@@ -29,14 +30,16 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
         if (!studentGroups[field]) {
           studentGroups[field] = [];
         }
-        const studentEntries = studentPropNames.map((propName, idx) => [propName, studentPropValues[idx]]);
+        const studentEntries = studentPropNames.map(
+          (propName, idx) => [propName, studentPropValues[idx]],
+        );
         studentGroups[field].push(Object.fromEntries(studentEntries));
       }
-
-      const totalStudents = Object.values(studentGroups).reduce((total, group) => total + group.length, 0);
+      const totalStudents = Object.values(studentGroups)
+        .reduce((total, group) => total + group.length, 0);
       reportParts.push(`Number of students: ${totalStudents}`);
       for (const [field, group] of Object.entries(studentGroups)) {
-        const studentNames = group.map(student => student.firstname).join(', ');
+        const studentNames = group.map((student) => student.firstname).join(', ');
         reportParts.push(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
       }
       resolve(reportParts.join('\n'));
@@ -52,11 +55,11 @@ app.get('/', (req, res) => {
 app.get('/students', (req, res) => {
   const dbFile = process.argv[2];
   countStudents(dbFile)
-    .then(report => {
+    .then((report) => {
       res.setHeader('Content-Type', 'text/plain');
       res.send(`This is the list of our students\n${report}`);
     })
-    .catch(err => {
+    .catch((err) => {
       res.setHeader('Content-Type', 'text/plain');
       res.status(500).send(err.message);
     });
