@@ -58,22 +58,26 @@ describe('Index page', function () {
   });
 
   it('should return status code 200 for POST /login', function (done) {
-    request.post({
+    const options = {
       url: `${BASE_URL}/login`,
+      method: 'POST',
       json: { userName: 'Betty' }
-    }, (error, response) => {
-      if (error) return done(error);
+    };
+    
+    request(options, (error, response) => {
       expect(response.statusCode).to.equal(200);
       done();
     });
   });
 
   it('should return the correct message for POST /login', function (done) {
-    request.post({
+    const options = {
       url: `${BASE_URL}/login`,
+      method: 'POST',
       json: { userName: 'Betty' }
-    }, (error, response, body) => {
-      if (error) return done(error);
+    };
+    
+    request(options, (error, response, body) => {
       expect(body).to.equal('Welcome Betty');
       done();
     });

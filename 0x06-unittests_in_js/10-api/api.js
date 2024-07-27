@@ -3,14 +3,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = 7865;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/', (_, res) => {
   res.send('Welcome to the payment system');
 });
 
 app.get('/cart/:id(\\d+)', (req, res) => {
-  const { id } = req.params;
+  const { id } = req.paramsi;
+
   res.send(`Payment methods for cart ${id}`);
 });
 
@@ -24,7 +25,11 @@ app.get('/available_payments', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  const { userName } = req.body;
+  let username = '';
+
+  if (req.body) {
+    username = req.body.userName;
+  }
   res.send(`Welcome ${userName}`);
 });
 
