@@ -61,7 +61,7 @@ app.get('/students', (_, res) => {
     })
     .catch((err) => {
       res.setHeader('Content-Type', 'text/plain');
-      res.status(500).send(err.message);
+      res.status(500).send(`This is the list of our students\n${err.message}`);
     });
 });
 
